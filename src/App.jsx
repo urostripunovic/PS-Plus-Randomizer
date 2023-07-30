@@ -10,25 +10,25 @@ export default function App() {
     .then(data => console.log(data));
   }, [])*/
 
-  const testa = () => {
-    fetch("http://localhost:9000/api/psplusgames")
+  const fetchData = () => {
+    fetch("http://localhost:5000/api/psplusgames")
       .then((res) => res.json())
       .then(response => {
         setData(response);
-        console.log(data)
+        //console.log(data)
       })
   }
 
-  const testa2 = () => {
+  const getRandomPSPlusTitle = () => {
     const randomNbr = getRandomNumber(0, data.length);
-    fetch(`http://localhost:9000/api/platprices?name=${data[randomNbr]}`)
+    fetch(`http://localhost:5000/api/platprices?name=${data[randomNbr]}`)
       .then(res => res.json())
       .then(ans => {
         console.log(ans)
       })
   }
 
-  const testa3 = () => {
+  const displayData = () => {
     console.log(data)
   }
 
@@ -39,11 +39,11 @@ export default function App() {
   }
 
   return (
-    <div>
+    <div className='test'>
       App
-      <button onClick={() => testa()}>fetch scraper</button>
-      <button onClick={() => testa2()}>get platprices value</button>
-      <button onClick={() => testa3()}>get fetched value</button>
+      <button onClick={() => fetchData()}>fetch scraper</button>
+      <button onClick={() => getRandomPSPlusTitle()}>get platprices value</button>
+      <button onClick={() => displayData()}>get fetched value</button>
     </div>
   )
 }

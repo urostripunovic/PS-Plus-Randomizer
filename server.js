@@ -6,18 +6,19 @@ import rateLimit from 'express-rate-limit'
 import axios from "axios";
 
 const app = express();
-const PORT = process.env.port || 9000;
+const PORT = process.env.port || 5000;
 dotenv.config();
 
 const limiterScraper = rateLimit({
-  windowMs: 15 * 60 * 1000, // 59 minutes
-  max: 1, // Limit each IP to 1 requests per `window` scraping the website
+  windowMs: 15 * 60 * 1000, // 15 minutes paus
+  max: 2, // Limit each IP to 1 requests per `window` scraping the website
 })
 
 const limiterPlatPrices = rateLimit({
   windowMs: 60 * 60 * 1000, // 60 minutes paus
-  max: 500, // Limit each IP to 1 requests per `window` scraping the website
+  max: 500, // Limit each IP to 500 requests per hour
 })
+
 //app.use('/api/psplusgames', limiterScraper);
 //app.use('/api/platprices', limiterPlatPrices);
 app.set("trust proxy", 1);
