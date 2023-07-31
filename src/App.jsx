@@ -1,49 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react';
+import { fetchPsPlusGames, fetchRandomPsPlusTitle } from './service'
+import { useQuery } from '@tanstack/react-query';
 
 export default function App() {
-  const [data, setData] = useState(null);
-  const [nbr, setNbr] = useState(null);
+  const psPlusGames = useQuery({
+    queryKey: ['PsPlusGames'],
+    queryFn: fetchPsPlusGames,
+    refetchOnWindowFocus: false,
+    refetchInterval: 60 * 60 * 1000,
+  })
 
-  /*useEffect(() => {
-    fetch("http://localhost:9000/api/psplusgames")
-    .then((res) => res.json())
-    .then(data => console.log(data));
-  }, [])*/
-
-  const fetchData = () => {
-    fetch("http://localhost:5000/api/psplusgames")
-      .then((res) => res.json())
-      .then(response => {
-        setData(response);
-        //console.log(data)
-      })
-  }
-
-  const getRandomPSPlusTitle = () => {
-    const randomNbr = getRandomNumber(0, data.length);
-    fetch(`http://localhost:5000/api/platprices?name=${data[randomNbr]}`)
-      .then(res => res.json())
-      .then(ans => {
-        console.log(ans)
-      })
-  }
-
-  const displayData = () => {
-    console.log(data)
-  }
-
-  const getRandomNumber = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-  }
+  /*const randomPsPlusGame = useQuery({
+    queryKey: ['RandomPsPlusGame'],
+    queryFn: () => fetchRandomPsPlusTitle(psPlusGames.data.All),
+    enabled: !!psPlusGames.data,
+    staleTime: 5 * 60 * 1000,
+  });*/
 
   return (
-    <div className='test'>
+    <div className=''>
       App
-      <button onClick={() => fetchData()}>fetch scraper</button>
-      <button onClick={() => getRandomPSPlusTitle()}>get platprices value</button>
-      <button onClick={() => displayData()}>get fetched value</button>
+      <button onClick={() => console.log(psPlusGames.data)}>log scraper</button>
+      <button onClick={async () => console.log(await fetchRandomPsPlusTitle(psPlusGames.data.All))}>get platprices value</button>
     </div>
   )
 }

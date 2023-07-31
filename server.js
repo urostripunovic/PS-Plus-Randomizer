@@ -66,14 +66,28 @@ const run = async () => {
 
     const extractedData = await page.evaluate(() => {
       const aTags = document.querySelectorAll('div.games-filtered ul.games-style-list li a');
-      const data = [];
+      const lastTagElement = document.querySelector('div.games-filtered ul.games-style-list li.last a')
 
+      const data = [];
       aTags.forEach((aTag) => {
         data.push(aTag.textContent.trim());
       });
 
-      return [...new Set(data)];
+      const uniqueData = [...new Set(data)];
+
+      const lastTag = lastTagElement.textContent.trim();
+      const cutOffIndex = uniqueData.findIndex(index => index === lastTag);
+
+      const options = {
+        All: uniqueData,
+        Extra: uniqueData.slice(0, cutOffIndex + 1),
+        Premium: uniqueData.slice(cutOffIndex + 1)
+      }
+
+      return options;
     });
+
+    console.log('Fetching done')
 
     await browser.close();
 
