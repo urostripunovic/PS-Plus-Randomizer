@@ -21,13 +21,12 @@ export const fetchRandomPsPlusTitle = async (option) => {
             }
         });
         const data = response.data;
+        console.log(data)
 
-        //Check once the UI is on if the recursive solution is worth it. otherwise try a while loop with a nbr of tries
         if (response.data.error) return fetchRandomPsPlusTitle(option);
 
         const parsed = parsePsPlusTitle(data);
-        console.log(parsed)
-        return data;
+        return parsed;
     } catch (error) {
         return "Something went wrong with fetching a Ps Plus title API", error;
     }
@@ -48,6 +47,8 @@ const parsePsPlusTitle = (data) => {
         HoursLow,
         IsPS4,
         IsPS5,
+        PSPPremium,
+        PSPExtra,
         PreviewVideo,
         Screenshot1,
         Screenshot2,
@@ -76,6 +77,7 @@ const parsePsPlusTitle = (data) => {
             HoursLow: HoursLow,
         },
         Platforms: parsePlatform(IsPS4, IsPS5),
+        Tier: parseTier(PSPPremium, PSPExtra),
         Media: [
             PreviewVideo,
             Screenshot1,
@@ -97,6 +99,11 @@ const getRandomNumber = (array) => {
 }
 
 const parsePlatform = (PS4, PS5) => {
-    console.log(PS4, PS5)
     return (PS5 === "" + 1 && PS4 === "" + 1) ? 'PS5-PS4' : PS5 === "" + 1 ? 'PS5' : 'PS4'
+}
+
+const parseTier = (premium, extra) => {
+    const img_premium = 'https://platprices.com/images/psp_premium_big.png';
+    const img_extra = 'https://platprices.com/images/psp_extra_big.png'
+    return premium !== "" + 1 && extra !== "" + 1 ? img_premium : premium === "" + 1 ? img_premium : img_extra
 }

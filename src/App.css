@@ -1,7 +1,116 @@
+.title-text {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: var(--offwhite);
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2),
+    1px 1px 1px rgba(0, 0, 0, 0.6);
+}
 
-
-.test {
+.parent-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  max-width: 700px;
+  margin: 0px auto;
+  flex-wrap: wrap;
+}
+
+.select-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  justify-self: start;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* CSS classes */
+.custom-button {
+  border: none;
+  color: var(--global-font-color);
+  background: var(--offwhite);
+  border-radius: 16px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: x-large;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.custom-button:hover {
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1.5s infinite;
+  border-radius: 6px;
+  transition: all;
+  transition-duration: 300ms;
+}
+
+.custom-button:active {
+  border-radius: 16px;
+}
+
+@keyframes pulse512 {
+  0% {
+    box-shadow: 0 0 0 0 #05bada66;
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+}
+
+.custom-select {
+  min-width: 158.2px;
+  border: none;
+  border-radius: 16px;
+  background-color: var(--offwhite);
+  padding: 8.5px 10px;
+  font-size: x-large;
+  cursor: pointer;
+  line-height: 1.1;
+  font-weight: 600;
+  color: var(--global-font-color);
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.custom-select:hover {
+  border-radius: 6px;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1.5s infinite;
+  transition: all;
+  transition-duration: 300ms;
+}
+
+.custom-select option {
+  font-weight: 600;
+  background: var(--offwhite);
+  color: var(--black-60);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.custom-select:focus {
+  outline: none;
+}
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--white-25);
 }

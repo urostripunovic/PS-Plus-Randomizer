@@ -8,7 +8,7 @@ A PS Plus game randomizer app for the subscription tiers Premium and Extra or co
 ### TODO
 - [ ] Initial loading screen with a spinning platinum trophy
     - Change the trophy to a white silhouette once the loading state is done and move it to the side of the buttons (if it's possible)
-- [ ] Create the intial buttons
+- [x] Create the intial buttons
     - Select options that should be randomized and a random button.
     - Make the work with Tanstack Query so that when a click happens it does a new query.
 - [ ] PS Plus Game page
