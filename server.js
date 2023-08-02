@@ -37,6 +37,21 @@ app.get('/api/platprices', async (req, res) => {
   }
 });
 
+app.get('/img', async (req, res) => {
+  const imageUrl = req.query.url; // Assuming the URL is passed as a query parameter
+
+  try {
+    const respone = await axios.get(imageUrl, {
+    });
+
+    const data = respone.data;
+    res.send(JSON.stringify(data))
+  } catch (error) {
+    console.error('Error fetching the image:', error);
+    res.status(500).send('Internal Server Error: Failed to fetch the image.');
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })

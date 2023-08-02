@@ -6,7 +6,7 @@ export default function ErrorScreen() {
             <h1 className='title-text'>
                 Error: Please refresh the page
             </h1>
-            <img src="public/loading/astrobot-error.gif" alt="Loading..." />
+            <img src="/loading/astrobot-error.gif" alt="Loading..." />
         </div>
     )
 }

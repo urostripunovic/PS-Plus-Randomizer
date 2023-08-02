@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { fetchPsPlusGames, fetchRandomPsPlusTitle } from './service'
+import { fetchPsPlusGames, fetchRandomPsPlusTitle, fetchImgAsBlob } from './service'
 import { useQuery } from '@tanstack/react-query';
 import './App.css';
 import LoadingScreen from './LoadingScreen';
 import TrophyPage from './components/TrophyPage';
 import ErrorScreen from './ErrorScreen';
+import RandomLoadingScreen from './RandomLoadingScreen';
 
 export default function App() {
   const [option, setOption] = useState('All');
@@ -22,6 +23,15 @@ export default function App() {
     refetchOnWindowFocus: false,
     enabled: data != null,
   });
+
+  /*const imgBlob = useQuery({
+    queryKey: ["God help me"],
+    queryFn: () => fetchImgAsBlob(randomPsPlusGame.data.CoverArt),
+    refetchOnWindowFocus: false,
+    enabled: randomPsPlusGame.data != null,
+  })
+  console.log(imgBlob.data)*/
+
 
   if (isLoading) return <LoadingScreen />
   if (isError) return <ErrorScreen />
@@ -45,7 +55,8 @@ export default function App() {
           <button className='custom-button' onClick={async () => randomPsPlusGame.refetch()}>Randomize</button>
         </div>
       </div>
-      <TrophyPage psTitle = {randomPsPlusGame}/>
+      {randomPsPlusGame.isRefetching || randomPsPlusGame.isLoading ? <RandomLoadingScreen /> : 
+      <TrophyPage game={randomPsPlusGame} option={option} />}
     </div>
 
   )

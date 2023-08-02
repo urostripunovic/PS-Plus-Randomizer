@@ -42,9 +42,14 @@
 }
 
 body {
-    background-image: url('public/images/playstation background.webp');
+    background-image: url('./images/playstation background.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+}
+
+a {
+    color: var(--offwhite);
+    text-decoration: none;
 }

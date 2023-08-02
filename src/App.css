@@ -1,18 +1,19 @@
 .title-text {
   margin-top: 40px;
   margin-bottom: 20px;
-  font-size: 3.2rem;
+  font-size: 3.8rem;
   font-weight: 600;
   color: var(--offwhite);
   text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2),
-    1px 1px 1px rgba(0, 0, 0, 0.6);
+    rgba(0, 0, 0, 0.4) 0px 4px 12px;
+  cursor: default;
 }
 
 .parent-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 700px;
+  max-width: 900px;
   margin: 0px auto;
   flex-wrap: wrap;
 }
@@ -23,12 +24,12 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   justify-self: start;
-
   margin-top: 20px;
   margin-bottom: 20px;
+  gap: 5px 10px;
+  text-align-last:center;
 }
 
-/* CSS classes */
 .custom-button {
   border: none;
   color: var(--global-font-color);
@@ -39,7 +40,6 @@
   font-size: x-large;
   padding: 10px 15px;
   cursor: pointer;
-  margin-right: 5px;
 }
 
 .custom-button:hover {
@@ -50,22 +50,14 @@
   transition-duration: 300ms;
 }
 
-.custom-button:active {
+.custom-button:not(:hover) {
   border-radius: 16px;
+  transition: all;
+  transition-duration: 300ms;
 }
 
-@keyframes pulse512 {
-  0% {
-    box-shadow: 0 0 0 0 #05bada66;
-  }
-
-  70% {
-    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
-  }
+.custom-button:active {
+  border-radius: 16px;
 }
 
 .custom-select {
@@ -73,20 +65,27 @@
   border: none;
   border-radius: 16px;
   background-color: var(--offwhite);
-  padding: 8.5px 10px;
+  padding: 10px 15px;
   font-size: x-large;
   cursor: pointer;
   line-height: 1.1;
   font-weight: 600;
   color: var(--global-font-color);
-  margin-bottom: 5px;
-  margin-right: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .custom-select:hover {
   border-radius: 6px;
   -webkit-animation: pulse 2s infinite;
   animation: pulse512 1.5s infinite;
+  transition: all;
+  transition-duration: 300ms;
+}
+
+.custom-select:not(:hover) {
+  border-radius: 16px;
   transition: all;
   transition-duration: 300ms;
 }
@@ -113,4 +112,25 @@
   width: 100%;
   height: 100%;
   background-color: var(--white-25);
+}
+
+.random-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes pulse512 {
+  0% {
+    box-shadow: 0 0 0 0 #05bada66;
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
 }

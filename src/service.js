@@ -32,11 +32,28 @@ export const fetchRandomPsPlusTitle = async (option) => {
     }
 }
 
+//Didn't work as planned :/
+export const fetchImgAsBlob = async (imageUrl) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/img`, {
+            params: {
+                url: imageUrl,
+            },
+        });
+        const data = response.data;
+        //console.log(data)
+        return data;
+    } catch (error) {
+        return "Something went wrong with fetching a Ps Plus title API", error;
+    }
+}
+
 const parsePsPlusTitle = (data) => {
     const {
         CoverArt,
         GameName,
         Img,
+        Desc,
         TrophyListURL,
         Platinum,
         Gold,
@@ -49,6 +66,7 @@ const parsePsPlusTitle = (data) => {
         IsPS5,
         PSPPremium,
         PSPExtra,
+        PSStoreURL,
         PreviewVideo,
         Screenshot1,
         Screenshot2,
@@ -65,6 +83,7 @@ const parsePsPlusTitle = (data) => {
         CoverArt: CoverArt,
         GameName: GameName,
         Img: Img,
+        Desc,
         TrophyListURL: TrophyListURL,
         //If any trophy has -1 as a value the field will say unkown.
         TrophyInfo: {
@@ -76,6 +95,9 @@ const parsePsPlusTitle = (data) => {
             HoursHigh: HoursHigh,
             HoursLow: HoursLow,
         },
+        PSStoreURL,
+        PSPPremium,
+        PSPExtra,
         Platforms: parsePlatform(IsPS4, IsPS5),
         Tier: parseTier(PSPPremium, PSPExtra),
         Media: [
