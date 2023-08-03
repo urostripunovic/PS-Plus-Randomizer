@@ -19,11 +19,15 @@ export default function TrophyComponent({ data }) {
 
     const allZero = () => {
         const arr = Object.keys(data.TrophyInfo).map(key => data.TrophyInfo[key])
-        let flag = false
+        const isAllZero = arr.every(item => item === '0');
+        //console.log(isAllZero)
+        return isAllZero
+        /*let flag = false
         arr.forEach(value => {
-            flag = value === 0;
+            flag = value === '0';
         })
-        return flag;
+        console.log(flag, arr)
+        return flag;*/
     }
 
 

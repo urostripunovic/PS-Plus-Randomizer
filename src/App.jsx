@@ -24,15 +24,6 @@ export default function App() {
     enabled: data != null,
   });
 
-  /*const imgBlob = useQuery({
-    queryKey: ["God help me"],
-    queryFn: () => fetchImgAsBlob(randomPsPlusGame.data.CoverArt),
-    refetchOnWindowFocus: false,
-    enabled: randomPsPlusGame.data != null,
-  })
-  console.log(imgBlob.data)*/
-
-
   if (isLoading) return <LoadingScreen />
   if (isError) return <ErrorScreen />
 
