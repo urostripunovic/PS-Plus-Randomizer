@@ -1,6 +1,6 @@
 .title-text {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 0px;
   font-size: 3.8rem;
   font-weight: 600;
   color: var(--offwhite);
@@ -27,7 +27,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   gap: 5px 10px;
-  text-align-last:center;
+  text-align-last: center;
 }
 
 .custom-button {
@@ -134,3 +134,17 @@
     box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
   }
 }
+
+/*
+0% {
+    box-shadow: 0 0 0 0 #05bada66;
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+  */

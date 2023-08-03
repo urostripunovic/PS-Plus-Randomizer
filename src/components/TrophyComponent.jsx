@@ -20,9 +20,10 @@ export default function TrophyComponent({ data }) {
     const allZero = () => {
         const arr = Object.keys(data.TrophyInfo).map(key => data.TrophyInfo[key])
         const isAllZero = arr.every(item => item === '0');
-        //console.log(isAllZero)
         return isAllZero
-        /*let flag = false
+        /*
+        //This works but the above solutions looks cleaner
+        let flag = false
         arr.forEach(value => {
             flag = value === '0';
         })
@@ -62,6 +63,7 @@ export default function TrophyComponent({ data }) {
             return (<span className='trophy-info-text'>
                 {HoursLow + " hours"}
             </span>)
+
         return (<span className='trophy-info-text'>
             {HoursLow + ' - ' + HoursHigh + " hours"}
         </span>)
