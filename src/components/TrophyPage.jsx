@@ -10,14 +10,14 @@ export default function TrophyPage({ game, option }) {
   const loadFadeIn = {
     opacity: load ? 0 : 1,
     transition: 'opacity 1s ease-in-out',
-};
+  };
 
   console.log(data)
 
   return (
     <div className='trophy-border' style={loadFadeIn}>
-      <CoverComponent data={data} option={option} load={load} setLoad={setLoad}/>
-      <TrophyComponent data={data} load={load}/>
+      <CoverComponent data={data} option={option} load={load} setLoad={setLoad} />
+      <TrophyComponent data={data} />
       <div>
         Media Images.
       </div>

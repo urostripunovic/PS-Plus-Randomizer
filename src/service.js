@@ -119,7 +119,7 @@ const parsePsPlusTitle = (data) => {
     }
 }
 
-const getRandomNumber = (array) => {
+export const getRandomNumber = (array) => {
     const max = Math.floor(array.length);
     return Math.floor(Math.random() * max);
 }
