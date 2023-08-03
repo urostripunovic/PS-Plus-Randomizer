@@ -4,6 +4,7 @@
     font-weight: 600;
     text-shadow: 3px 0px 7px rgba(81, 67, 21, 0.8), -3px 0px 7px rgba(81, 67, 21, 0.8), 0px 4px 7px rgba(81, 67, 21, 0.8);
     z-index: 1;
+    cursor: default;
 }
 
 .trophy-border {
@@ -17,6 +18,7 @@
 .cover-border {
     display: flex;
     gap: 20px;
+    /*flex-wrap: wrap;*/
 }
 
 .name-platform {
@@ -28,11 +30,11 @@
 .img-size {
     width: 280px;
     height: 280px;
-    border-radius: 8px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px;
     object-fit: contain;
     position: relative;
-    z-index: 2;
 }
 
 .img-container {
@@ -46,7 +48,6 @@
     top: 0%;
     left: 50%;
     transform: translate(-50%, 770%);
-    z-index: 3;
 }
 
 .remove-tier-img {
@@ -57,4 +58,73 @@
     width: fit-content;
     max-height: 45px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.trophies-border {
+    display: flex;
+    gap: 20px;
+    background: rgba(245, 245, 245, 0.8);
+    color: var(--global-font-color);
+    padding: 10px 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.test {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.trophy-title-style {
+    color: var(--global-font-color);
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.trophy-info-text {
+    color: var(--global-font-color);
+    font-size: x-large;
+}
+
+.trophy-colum {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.map-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.bg-Platinum {
+    background: url('./images/common_sprites.webp') -40px -60px;
+}
+
+.bg-Gold {
+    background: url('./images/common_sprites.webp') 0px -60px;
+}
+
+.bg-Silver {
+    background: url('./images/common_sprites.webp') -60px -60px;
+}
+
+.bg-Bronze {
+    background: url('./images/common_sprites.webp') 0 0;
+}
+
+.bg-unkown {
+    background: url('./images/common_sprites.webp') -100px -80px;
+}
+
+.trophy-img-size {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
 }

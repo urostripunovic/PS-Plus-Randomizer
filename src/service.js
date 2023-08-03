@@ -17,7 +17,7 @@ export const fetchRandomPsPlusTitle = async (option) => {
         const randomNbr = getRandomNumber(option);
         const response = await axios.get(`${BASE_URL}/api/platprices`, {
             params: {
-                name: option[randomNbr],
+                name: option[randomNbr], //'RESIDENT EVIL VILLAGE'
             }
         });
         const data = response.data;
@@ -67,6 +67,7 @@ const parsePsPlusTitle = (data) => {
         PSPPremium,
         PSPExtra,
         PSStoreURL,
+        UnobtainableTrophies,
         PreviewVideo,
         Screenshot1,
         Screenshot2,
@@ -91,12 +92,15 @@ const parsePsPlusTitle = (data) => {
             Gold: Gold,
             Silver: Silver,
             Bronze: Bronze,
-            Difficulty: Difficulty,
+        },
+        Difficulty: Difficulty,
+        Time : {
             HoursHigh: HoursHigh,
             HoursLow: HoursLow,
         },
         PSStoreURL,
         PSPPremium,
+        UnobtainableTrophies,
         PSPExtra,
         Platforms: parsePlatform(IsPS4, IsPS5),
         Tier: parseTier(PSPPremium, PSPExtra),
