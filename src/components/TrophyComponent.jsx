@@ -72,10 +72,10 @@ export default function TrophyComponent({ data }) {
                 {trophyStatus() ||
                     (
                         <div className='map-flex'>
-                            {Object.keys(data.TrophyInfo).map(key => {
+                            {Object.keys(data.TrophyInfo).map((key, index) => {
                                 return (
                                     <>
-                                        <div className={`trophy-img-size bg-${key}`}></div>
+                                        <div key={key+index} className={`trophy-img-size bg-${key}`}></div>
                                         <div key={key} className='trophy-info-text'>{data.TrophyInfo[key]}</div>
                                     </>
                                 )

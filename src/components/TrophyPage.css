@@ -21,6 +21,12 @@
     /*flex-wrap: wrap;*/
 }
 
+@media (max-width: 500px) {
+    .cover-border {
+        flex-wrap: wrap;
+    }
+  }
+
 .name-platform {
     display: flex;
     flex-direction: column;
@@ -81,11 +87,13 @@
     color: var(--global-font-color);
     font-size: xx-large;
     font-weight: 600;
+    cursor: default;
 }
 
 .trophy-info-text {
     color: var(--global-font-color);
     font-size: x-large;
+    cursor: default;
 }
 
 .trophy-colum {

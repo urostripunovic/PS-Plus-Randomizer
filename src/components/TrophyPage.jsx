@@ -12,6 +12,9 @@ export default function TrophyPage({ game, option }) {
     <div className='trophy-border'>
       <CoverComponent data={data} option={option} />
       <TrophyComponent data={data} />
+      <div>
+        Media Images.
+      </div>
     </div>
   )
 }
