@@ -1,11 +1,19 @@
-# PSN Plus Essentials and Deluxe Games Randomizer App
+# Ps Plus Premium and Extra Game Randomizer App
 
-A PS Plus game randomizer app for the subscription tiers Premium and Extra or combined. Using the API provided by [PlatPrices](https://platprices.com/developers.php) as well as my own API created with the help of [Express.js](https://expressjs.com/) and [Puppetteer](https://pptr.dev/).  Puppetteer was used in-order to scrape a website of the current available ps plus games for each subscription tier and express was used as a backend for that as well as to hide the API key for when this site is deployed.
+
+The PS Plus Game Randomizer App is designed exclusively for the Premium and Extra subscription tiers. With this app, users can discover new games to try and achieve platinum trophies for. The app provides information about each game, including the number of trophies available, the difficulty level, and the estimated time required to earn a platinum trophy. Additionally, users can view gameplay videos and screenshots for a better understanding of the game's content. 
+
+The app is powered by a combination of APIs, including the one provided by [PlatPrices](https://platprices.com/developers.php), and my own custom API built using [Express.js](https://expressjs.com/) and [Puppetteer](https://pptr.dev/). Leveraging Puppetteer, the app effectively scrapes the website to gather up-to-date information on the current selection of PS Plus games available for each subscription tier. By utilizing Express.js as the backend, the app ensures the security of the API key and processes the scraped data efficiently.
 
 ## [Link to the randomizer app]()
 
 
 ### TODO
+
+#### Backend
+- [x] Finished it before starting the documentation
+
+#### Frontend
 - [x] Initial loading screen
 - [x] Create the intial buttons
     - Select options that should be randomized and a random button.

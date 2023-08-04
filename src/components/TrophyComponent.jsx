@@ -2,7 +2,7 @@ import React from 'react'
 import './TrophyPage.css'
 
 export default function TrophyComponent({ data }) {
-    
+
     const allZero = () => {
         const arr = Object.keys(data.TrophyInfo).map(key => data.TrophyInfo[key])
         const isAllZero = arr.every(item => item === '0');
@@ -23,7 +23,7 @@ export default function TrophyComponent({ data }) {
                     <span > unknown</span>
                 </span>
             )
-        
+
         return (
             <div className='map-flex'>
                 {Object.keys(data.TrophyInfo).map((key, index) => {
@@ -92,7 +92,12 @@ export default function TrophyComponent({ data }) {
     return (
         <div className='trophies-border'>
             <div className='trophy-colum'>
-                <a href={data.TrophyListURL} target="_blank" rel="noopener noreferrer" className='trophy-title-style'> Trophies </a>
+                <a
+                    href={data.TrophyListURL}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className='trophy-title-style cursor-trophy'
+                > Trophies </a>
                 {trophyStatus()}
             </div>
             <div className={noTrophyStyle}>

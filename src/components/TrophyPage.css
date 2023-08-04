@@ -136,3 +136,7 @@
     display: inline-block;
     vertical-align: middle;
 }
+
+.cursor-trophy {
+    cursor: pointer;
+}
