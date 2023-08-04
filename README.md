@@ -25,6 +25,6 @@ The app is powered by a combination of APIs, including the one provided by [Plat
         - Difficulty
         - Time estimate
     - [ ] Container three with the images
-        - A carousel with all the images the video if existent first. Also one should be able to go in both directions.ybe
+        - A carousel with all the images the video if existent first. Also one should be able to go in both directions.
 
         
