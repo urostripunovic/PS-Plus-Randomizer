@@ -32,22 +32,6 @@ export const fetchRandomPsPlusTitle = async (option) => {
     }
 }
 
-//Didn't work as planned :/
-export const fetchImgAsBlob = async (imageUrl) => {
-    try {
-        const response = await axios.get(`${BASE_URL}/img`, {
-            params: {
-                url: imageUrl,
-            },
-        });
-        const data = response.data;
-        //console.log(data)
-        return data;
-    } catch (error) {
-        return "Something went wrong with fetching a Ps Plus title API", error;
-    }
-}
-
 const parsePsPlusTitle = (data) => {
     const {
         CoverArt,
@@ -86,7 +70,6 @@ const parsePsPlusTitle = (data) => {
         Img: Img,
         Desc,
         TrophyListURL: TrophyListURL,
-        //If any trophy has -1 as a value the field will say unkown.
         TrophyInfo: {
             Platinum: Platinum,
             Gold: Gold,

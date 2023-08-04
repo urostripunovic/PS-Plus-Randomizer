@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import puppeteer from 'puppeteer';
 import axios from "axios";
+import rateLimit from "express-rate-limit";
 
 const app = express();
 const PORT = process.env.port || 5000;
@@ -16,13 +17,24 @@ const SCRAPING_URL = process.env.VITE_SCRAPING_WEBSITE;
 const PLAT_PRICES_URL = process.env.VITE_PLAT_PRICES_URL;
 const PLAT_PRICES_API_KEY = process.env.VITE_PLAT_PRICES_API_KEY;
 
-//cache this respone for the next two weeks
+const limiterScraper = rateLimit({
+  windowMs: 10 * 1000,
+  max: 1, // 1 request per 10 seconds of each user
+})
+
+const limiterPlatPrices = rateLimit({
+  windowMs: 10 * 1000,
+  max: 20, //20 requests per 10 seconds
+})
+
+app.use('/api/psplusgames', limiterScraper);
+app.use('/api/platprices', limiterPlatPrices);
+
 app.get('/api/psplusgames', async (req, res) => {
   const psplusgame = await run();
   res.send(psplusgame);
 })
 
-//cache the value for the next day
 app.get('/api/platprices', async (req, res) => {
   try {
     const response = await axios.get(`${PLAT_PRICES_URL}`, {
@@ -34,21 +46,6 @@ app.get('/api/platprices', async (req, res) => {
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: "An error occurred" });
-  }
-});
-
-app.get('/img', async (req, res) => {
-  const imageUrl = req.query.url; // Assuming the URL is passed as a query parameter
-
-  try {
-    const respone = await axios.get(imageUrl, {
-    });
-
-    const data = respone.data;
-    res.send(JSON.stringify(data))
-  } catch (error) {
-    console.error('Error fetching the image:', error);
-    res.status(500).send('Internal Server Error: Failed to fetch the image.');
   }
 });
 

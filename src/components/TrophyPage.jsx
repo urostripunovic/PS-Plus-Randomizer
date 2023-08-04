@@ -16,7 +16,7 @@ export default function TrophyPage({ game, option }) {
 
   return (
     <div className='trophy-border' style={loadFadeIn}>
-      <CoverComponent data={data} option={option} load={load} setLoad={setLoad} />
+      <CoverComponent data={data} option={option} setLoad={setLoad} />
       <TrophyComponent data={data} />
       <div>
         Media Images.

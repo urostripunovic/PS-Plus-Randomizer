@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { fetchPsPlusGames, fetchRandomPsPlusTitle, fetchImgAsBlob } from './service'
 import { useQuery } from '@tanstack/react-query';
-import './App.css';
+import { fetchPsPlusGames, fetchRandomPsPlusTitle } from './service'
 import LoadingScreen from './LoadingScreen';
 import TrophyPage from './components/TrophyPage';
 import ErrorScreen from './ErrorScreen';
 import RandomLoadingScreen from './RandomLoadingScreen';
+import './App.css';
 
 export default function App() {
   const [option, setOption] = useState('All');
