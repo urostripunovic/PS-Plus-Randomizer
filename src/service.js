@@ -1,7 +1,7 @@
 import axios from "axios";
 import dotenv from "dotenv";
 
-const BASE_URL = process.env.VITE_BASE_URL || "http://localhost:5000";
+const BASE_URL = process.env.VITE_BASE_URL || "http://localhost:3000";
 
 export const fetchPsPlusGames = async () => {
     try {

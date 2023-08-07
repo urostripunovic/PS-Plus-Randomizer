@@ -6,7 +6,7 @@ import axios from "axios";
 import rateLimit from "express-rate-limit";
 
 const app = express();
-const PORT = process.env.port || 5000;
+const PORT = process.env.port || 3000;
 dotenv.config();
 
 app.set("trust proxy", 1);
