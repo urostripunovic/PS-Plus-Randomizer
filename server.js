@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import puppeteer from 'puppeteer';
 import axios from "axios";
 import rateLimit from "express-rate-limit";
+import serverless from "serverless-http";
 
 const app = express();
 const PORT = process.env.port || 5000;
@@ -49,9 +50,11 @@ app.get('/api/platprices', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT , () => {
   console.log(`Server running on port ${PORT}`)
 })
+
+export const handler = serverless(app);
 
 const run = async () => {
   let browser;

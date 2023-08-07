@@ -21,7 +21,7 @@ export const fetchRandomPsPlusTitle = async (option) => {
             }
         });
         const data = response.data;
-        console.log(data)
+        //console.log(data)
 
         if (response.data.error) return fetchRandomPsPlusTitle(option);
 
@@ -87,7 +87,7 @@ const parsePsPlusTitle = (data) => {
         PSPExtra,
         Platforms: parsePlatform(IsPS4, IsPS5),
         Tier: parseTier(PSPPremium, PSPExtra),
-        Media: [
+        Media: processMedia([
             PreviewVideo,
             Screenshot1,
             Screenshot2,
@@ -98,7 +98,7 @@ const parsePsPlusTitle = (data) => {
             Screenshot7,
             Screenshot8,
             Screenshot9,
-        ],
+        ]),
     }
 }
 
@@ -115,4 +115,8 @@ const parseTier = (premium, extra) => {
     const img_premium = 'https://platprices.com/images/psp_premium_big.png';
     const img_extra = 'https://platprices.com/images/psp_extra_big.png'
     return premium !== "" + 1 && extra !== "" + 1 ? img_premium : premium === "" + 1 ? img_premium : img_extra
+}
+
+const processMedia = (arr) => {
+    return arr.filter(p => p !== "");
 }
