@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import puppeteer from 'puppeteer';
 import axios from "axios";
 import rateLimit from "express-rate-limit";
-import serverless from "serverless-http";
 
 const app = express();
 const PORT = process.env.port || 5000;
