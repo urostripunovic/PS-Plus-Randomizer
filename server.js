@@ -50,7 +50,7 @@ app.get('/api/platprices', async (req, res) => {
   }
 });
 
-app.listen(PORT , () => {
+app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
 
@@ -58,7 +58,18 @@ app.listen(PORT , () => {
 const run = async () => {
   let browser;
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: [
+        "--disable-setuid-sandbox",
+        "--no-sandbox",
+        "--single-process",
+        "--no-zygote",
+      ],
+      executablePath:
+        process.env.NODE_ENV === "production"
+          ? process.env.PUPPETEER_EXECUTABLE_PATH
+          : puppeteer.executablePath(),
+    });
     const page = await browser.newPage();
 
     page.setDefaultNavigationTimeout(2 * 60 * 1000);
