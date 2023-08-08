@@ -108,13 +108,13 @@ export const getRandomNumber = (array) => {
 }
 
 const parsePlatform = (PS4, PS5) => {
-    return (PS5 === "" + 1 && PS4 === "" + 1) ? 'PS5-PS4' : PS5 === "" + 1 ? 'PS5' : 'PS4'
+    return (PS5 === "1" && PS4 === "1") ? 'PS5-PS4' : PS5 === "1" ? 'PS5' : 'PS4'
 }
 
 const parseTier = (premium, extra) => {
     const img_premium = 'https://platprices.com/images/psp_premium_big.png';
     const img_extra = 'https://platprices.com/images/psp_extra_big.png'
-    return premium !== "" + 1 && extra !== "" + 1 ? img_premium : premium === "" + 1 ? img_premium : img_extra
+    return premium !== "1" && extra !== "1" ? img_premium : premium === "1" ? img_premium : img_extra
 }
 
 const processMedia = (arr) => {
