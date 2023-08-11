@@ -18,7 +18,7 @@ export default function MediaComponent({ data }) {
         <div className="previous nav-btn" onClick={handlePreviousSlide}>{'<'}</div>
         <div className="next nav-btn" onClick={handleNextSlide} >{'>'}</div>
       </div>
-      {data.Media[currentIndex].includes('.dl' || '.mp4') ?
+      {data?.Media[currentIndex]?.includes('.dl') || data?.Media[currentIndex]?.includes('.mp4') ?
         <video className='image' src={data.Media[currentIndex]} controls />
         : <img className='image' src={data.Media[currentIndex]} />}
     </div>
