@@ -51,7 +51,7 @@ export default function TrophyComponent({ data }) {
                 </span>
             )
 
-        if (Difficulty === '0' || Difficulty === '-1')
+        if (Difficulty === '-1')
             return (
                 <span className='trophy-info-text'>
                     ??

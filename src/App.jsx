@@ -47,7 +47,7 @@ export default function App() {
         </div>
       </div>
       {randomPsPlusGame.isRefetching || randomPsPlusGame.isLoading ? <RandomLoadingScreen /> : 
-      <TrophyPage game={randomPsPlusGame} option={option} />}
+      data && <TrophyPage game={randomPsPlusGame} option={option} />}
     </div>
 
   )
