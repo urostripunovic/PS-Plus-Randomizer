@@ -13,7 +13,7 @@ export default function MediaComponent({ data }) {
   }
 
   return (
-    <div className='media-border'>
+    <div className={`media-border ${data.Media.length === 0 && 'hidden'}`}>
       <div className='navigation-buttons'>
         <div className="previous nav-btn" onClick={handlePreviousSlide}>{'<'}</div>
         <div className="next nav-btn" onClick={handleNextSlide} >{'>'}</div>
