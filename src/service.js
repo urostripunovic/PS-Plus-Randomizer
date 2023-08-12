@@ -17,8 +17,8 @@ export const fetchRandomPsPlusTitle = async (option) => {
         const randomNbr = getRandomNumber(option);
         const response = await axios.get(`${BASE_URL}/api/platprices`, {
             params: {
-                //name: option[randomNbr], 
-                name: 'MELTY BLOOD: TYPE LUMINA'
+                name: option[randomNbr], 
+                //name: 'MELTY BLOOD: TYPE LUMINA'
             }
         });
         const data = response.data;
