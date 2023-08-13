@@ -18,7 +18,7 @@ export const fetchRandomPsPlusTitle = async (option) => {
         const response = await axios.get(`${BASE_URL}/api/platprices`, {
             params: {
                 name: option[randomNbr], 
-                //name: 'MELTY BLOOD: TYPE LUMINA'
+                //name: 'ACE COMBAT 7: SKIES UNKNOWN'
             }
         });
         const data = response.data;
@@ -26,19 +26,18 @@ export const fetchRandomPsPlusTitle = async (option) => {
 
         if (response.data.error) return fetchRandomPsPlusTitle(option);
 
-        const parsed = parsePsPlusTitle(data);
+        const parsed = parsePsPlusTitle(data, option);
         return parsed;
     } catch (error) {
         return "Something went wrong with fetching a Ps Plus title API", error;
     }
 }
 
-const parsePsPlusTitle = (data) => {
+const parsePsPlusTitle = (data, option) => {
     const {
         CoverArt,
         GameName,
         Img,
-        Desc,
         TrophyListURL,
         Platinum,
         Gold,
@@ -49,8 +48,6 @@ const parsePsPlusTitle = (data) => {
         HoursLow,
         IsPS4,
         IsPS5,
-        PSPPremium,
-        PSPExtra,
         PSStoreURL,
         UnobtainableTrophies,
         PreviewVideo,
@@ -69,7 +66,6 @@ const parsePsPlusTitle = (data) => {
         CoverArt: CoverArt,
         GameName: GameName,
         Img: Img,
-        Desc,
         TrophyListURL: TrophyListURL,
         TrophyInfo: {
             Platinum: Platinum,
@@ -83,11 +79,9 @@ const parsePsPlusTitle = (data) => {
             HoursLow: HoursLow,
         },
         PSStoreURL,
-        PSPPremium,
         UnobtainableTrophies,
-        PSPExtra,
         Platforms: parsePlatform(IsPS4, IsPS5),
-        Tier: parseTier(PSPPremium, PSPExtra),
+        Tier: parseTier(option),
         Media: processMedia([
             PreviewVideo,
             Screenshot1,
@@ -112,10 +106,10 @@ const parsePlatform = (PS4, PS5) => {
     return (PS5 === "1" && PS4 === "1") ? 'PS5-PS4' : PS5 === "1" ? 'PS5' : 'PS4'
 }
 
-const parseTier = (premium, extra) => {
+const parseTier = (option) => {
     const img_premium = 'https://platprices.com/images/psp_premium_big.png';
     const img_extra = 'https://platprices.com/images/psp_extra_big.png'
-    return premium !== "1" && extra !== "1" ? img_premium : premium === "1" ? img_premium : img_extra
+    return option === 'premium' ? img_premium : img_extra
 }
 
 const processMedia = (arr) => {
