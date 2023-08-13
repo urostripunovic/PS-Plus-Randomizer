@@ -13,11 +13,13 @@ export default function CoverComponent({ data, option, setLoad }) {
         boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
     };
 
+    const specialCase = data.PSPExtra === '0' && data.PSPPremium === '0'
+
     const condition = () => {
-        if (data?.Tier?.includes('premium')) {
+        if (data.PSPPremium === '1' || specialCase) {
             if (option === 'All' || option === 'Extra')
                 return ''
-        } else if (data?.Tier?.includes('extra')) {
+        } else if (data.PSPExtra === '1') {
             if (option === 'All' || option === 'Premium')
                 return ''
         }
