@@ -4,7 +4,7 @@ import './TrophyPage.css'
 export default function TrophyComponent({ data }) {
 
     const allZero = () => {
-        const arr = Object.keys(data.TrophyInfo).map(key => data.TrophyInfo[key])
+        const arr = Object.keys(data?.TrophyInfo).map(key => data?.TrophyInfo[key])
         const isAllZero = arr.every(item => item === '0');
         return isAllZero
     }
@@ -13,24 +13,24 @@ export default function TrophyComponent({ data }) {
         if (allZero())
             return (
                 <span className='trophy-info-text'>
-                    There are no trophies for {data.GameName}
+                    There are no trophies for {data?.GameName}
                 </span>
             )
         else if (data.TrophyInfo.Bronze === '-1')
             return (
                 <span className='trophy-info-text'>
                     <span className='trophy-img-size bg-unkown'></span>
-                    <span > unknown</span>
+                    <span > unknown </span>
                 </span>
             )
 
         return (
             <div className='map-flex'>
-                {Object.keys(data.TrophyInfo).map((key, index) => {
+                {Object.keys(data?.TrophyInfo).map((key, index) => {
                     return (
                         <>
                             <div key={key + index} className={`trophy-img-size bg-${key}`}></div>
-                            <div key={key} className='trophy-info-text'>{data.TrophyInfo[key]}</div>
+                            <div key={key} className='trophy-info-text'>{data?.TrophyInfo[key]}</div>
                         </>
                     )
                 })}
@@ -65,7 +65,7 @@ export default function TrophyComponent({ data }) {
         const {
             HoursLow,
             HoursHigh
-        } = data.Time
+        } = data?.Time
 
         if (HoursLow === '-1')
             return (
@@ -87,13 +87,13 @@ export default function TrophyComponent({ data }) {
         )
     }
 
-    const noTrophyStyle = allZero() || data.TrophyInfo.Bronze === '-1' ? 'remove-tier-img' : 'trophy-colum';
+    const noTrophyStyle = allZero() || data?.TrophyInfo?.Bronze === '-1' ? 'remove-tier-img' : 'trophy-colum';
 
     return (
         <div className='trophies-border'>
             <div className='trophy-colum'>
                 <a
-                    href={data.TrophyListURL}
+                    href={data?.TrophyListURL}
                     target="_blank" 
                     rel="noopener noreferrer"
                     className='trophy-title-style cursor-trophy'

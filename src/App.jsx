@@ -16,10 +16,10 @@ export default function App() {
     refetchOnWindowFocus: false,
     refetchInterval: 60 * 60 * 1000,
   })
-
+  //console.log(data);
   const randomPsPlusGame = useQuery({
     queryKey: ['RandomPsPlusGame'],
-    queryFn: () => fetchRandomPsPlusTitle(data[option]),
+    queryFn: () => fetchRandomPsPlusTitle(data[option], data.Premium),
     refetchOnWindowFocus: false,
     enabled: data != null,
   });
